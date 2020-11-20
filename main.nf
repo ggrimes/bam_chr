@@ -1,8 +1,11 @@
 
+
+params.bam_path='bams/*.{bam,bai}'
+
 chr_ch=Channel
     .of(1..21, 'X', 'Y')
 
-bam_ch=Channel.fromFilePairs('bams/*.{bam,bai}')
+bam_ch=Channel.fromFilePairs(params.bam_path)
 { file -> file.name.replaceAll(/.bam|.bai$/,'') }
 
 
